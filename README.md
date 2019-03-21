@@ -114,7 +114,7 @@ class ESCursor:
 	default_query_body = {'query': {"match_all": {}}}
 
 	def __init__(self, es_conn, index, doc_type="_doc", body=default_query_body, 
-											total_number=None, batch_size=1000):
+							total_number=None, batch_size=1000):
 		self.es_conn = es_conn
 		self.index = index
 		self.doc_type = doc_type
@@ -133,7 +133,7 @@ class ESCursor:
 		self.offset = 0 # the parameter to "from" keyword, when fetching each batch
 		self.inbtach_idx = 0 # index in the current batch
 		self.current_batch_size = 0 # the actual batch size. 
-										 # May be smaller than "batch_size".
+					    # May be smaller than "batch_size".
 
 	def __iter__(self):
 		"""
@@ -159,8 +159,8 @@ class ESCursor:
 			raise StopIteration
 		body_batch = {**self.body, "from": self.offset, "size": self.batch_size}
 		res_data = self.es_conn.search(index=self.index, 
-											 doc_type=self.doc_type, 
-											 body=body_batch)
+					       doc_type=self.doc_type, 
+					       body=body_batch)
 		self.hits = res_data["hits"]["hits"]
 		self.current_batch_size = len(self.hits)
 		self.inbtach_idx = 0
