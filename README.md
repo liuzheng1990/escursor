@@ -194,7 +194,7 @@ Now the `ESCursor` object will really behave like a cursor. Let's say we want to
 es = Elasticsearch() # elasticsearch connection to localhost:9200
 body = ESCursor.default_query_body # see the class definition above
 body['stored_fields'] = [] # add a field to prevent fields from returning
-								# we just need _id, and don't want to wait network resource
+			   # we just need _id, and don't want to wait network resource
 es_cursor = ESCursor(es, "bank", "customer", body=body, total_number=200, batch_size=10)
 # here index="bank", doc_type="customer"
 
