@@ -1,8 +1,8 @@
 # How to DIY a cursor class for Elasticsearch (and why it doesn't work well)
 
-This repo is created for my [blog artile](https://liutheprogrammer.wordpress.com/2019/03/21/how-to-diy-a-cursor-class-for-elasticsearch/). I'm also posting that article here.
+This repo is created for my [blog article](https://liutheprogrammer.wordpress.com/2019/03/21/how-to-diy-a-cursor-class-for-elasticsearch/). I'm also posting that article here.
 
-New to Elasticsearch, it took me a significant amount of time to figure out how to iterate through a large data set. In the beginning, it looked strange to me that **Elasticsearch does not return a cursor when one makes a query**. Instead, it only returns a page of the full data set (with page size default to 10). To a person more familiar with python's SQL and MongoDB drivers and less with Elasticsearch's driver, I felt at loss when a query did not return me a cursor. Although I heard that the Elasticsearch helpers might be designed for this purpose, I didn't came to it directly. Instead, my attention was attracted by the **"from" and "size" parameters in the query body**.
+New to Elasticsearch, I have spend a significant amount of time to figure out how to iterate through a large data set. In the beginning, it looked strange to me that **Elasticsearch does not return a cursor when one makes a query**. Instead, it only returns a page of the full data set (with page size default to 10). To a person more familiar with python's SQL and MongoDB drivers and less with Elasticsearch's driver, I felt at loss when a query did not return me a cursor. Although I heard that the Elasticsearch helpers might be designed for this purpose, I didn't came to it directly. Instead, my attention was attracted by the **"from" and "size" parameters in the query body**.
 
 "Hmm. It seems I can retrieve the query results in batches. With some knowledge of Python's **iterator class protocol**, I should be able to wrap the returned data into a cursor myself!"
 
